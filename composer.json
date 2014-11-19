@@ -1,0 +1,13 @@
+{
+    "require": {
+        "cocur/slugify": "0.10.*"
+    },
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "Web1\\StringGenerator\\": "src/",
+            "Tests\\StringGenerator\\": "tests"
+        }
+
+    }
+}
