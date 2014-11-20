@@ -1,3 +1,3 @@
 # StringGenerator
 
-[![Build Status](https://travis-ci.org/Aliabdennadher/exoPSR.svg?branch=master)](https://travis-ci.org/Aliabdennadher/exoPSR)
+[![Build Status](https://travis-ci.org/aliabdennadher/A3_PSR.svg?branch=master)](https://travis-ci.org/aliabdennadher/A3_PSR)
