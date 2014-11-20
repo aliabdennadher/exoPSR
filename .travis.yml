@@ -14,5 +14,5 @@ script:
     - phpunit --coverage-clover=coverage.clover
 
 after_script:
-    -php ocular.phar code-coverage:upload --format=php-clover coverage.clover
+    - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
 
