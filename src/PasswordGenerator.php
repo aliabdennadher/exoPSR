@@ -1,10 +1,9 @@
 <?php
 /**
- * Created by JetBrains PhpStorm.
- * User: Alexandre
- * Date: 18/11/14
- * Time: 11:58
- * To change this template use File | Settings | File Templates.
+ * Created by PhpStorm.
+ * User: Benjamin
+ * Date: 18/11/2014
+ * Time: 11:57
  */
 
 namespace Web1\StringGenerator;
@@ -15,76 +14,68 @@ namespace Web1\StringGenerator;
  */
 class PasswordGenerator
 {
-    /**
-     *
-     */
     const PASSWORD_EASY = 0;
-    /**
-     *
-     */
     const PASSWORD_MEDIUM = 1;
-    /**
-     *
-     */
     const PASSWORD_HARD = 2;
 
     /**
      * @var string
      */
-    private static $passwordDefaultEasy= 'abcdefghijklmnopqrstuvwxyz';
+    private static $passwordCharEasy        = 'abcdefghijlmnopqrstuvwxyz';
+
     /**
      * @var string
      */
-    private static $passwordDefaultMedium = 'ABCDEFGHIJKLMOPQRSTUVWXYZ0123456789';
+    private static $passwordCharMedium      = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+
     /**
      * @var string
      */
-    private static $passwordDefaultHard = 'èé#à@ç!?:/&';
+    private static $passwordCharHard        = '&é(-è_çà)=^$ù@^\|[{#~*';
 
     /**
      * @var int
      */
-    private static  $passwordDefaultLength = 10;
+    private static $passwordDefaultLength   = 10;
 
     /**
-     * @param null $nb
+     * @param null $number
      * @param int $strength
      * @return string
      * @throws \Exception
      */
-    public function generateRandomString($nb = null,$strength = self::PASSWORD_MEDIUM)
+    public static function getRandomString($number = null, $strength = self::PASSWORD_MEDIUM)
     {
-
-        if(!in_array($strength, [
+        if (!in_array($strength, [
             self::PASSWORD_EASY,
             self::PASSWORD_MEDIUM,
             self::PASSWORD_HARD,
         ]))
-            throw new \Exception('Bad strength');
+            throw new \Exception('C PAS UNE VRAI FORCE MORRAYYYY');
 
-        $length = (is_null($nb))
+        $length = (is_null($number))
             ? self::$passwordDefaultLength
-            : (0 === (int)$nb)
-            ? self::$passwordDefaultLength
-            : (int)$nb;
+            : (0 === (int)$number)
+                ? self::$passwordDefaultLength
+                : (int)$number;
 
-        switch($strength){
+        $password = '';
+
+        switch ($strength) {
             case self::PASSWORD_EASY:
-                $alphabet = self::$passwordDefaultEasy;
+                $char = self::$passwordCharEasy;
                 break;
             case self::PASSWORD_MEDIUM:
-                $alphabet = self::$passwordDefaultEasy.self::$passwordDefaultMedium;
+                $char = self::$passwordCharEasy.self::$passwordCharMedium;
                 break;
             case self::PASSWORD_HARD:
-                $alphabet = self::$passwordDefaultEasy.self::$passwordDefaultMedium.self::$passwordDefaultHard;
-                break;
-
+                $char = self::$passwordCharEasy.self::$passwordCharMedium.self::$passwordCharHard;
         }
 
-        $password = "";
-        for ($i=0; $i<$nb; $i++){
-            $password .= substr($alphabet,mt_rand(0,(strlen($alphabet)-1)),1);
+        for ($i = 0; $i < $length; $i++) {
+            $password .= mb_substr($char, rand(0, (mb_strlen($char)-1)), 1);
         }
+
         return $password;
     }
 }
