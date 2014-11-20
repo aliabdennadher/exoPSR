@@ -7,6 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Web1\\StringGenerator\\' => array($baseDir . '/src'),
-    'Tests\\StringGenerator\\' => array($baseDir . '/testss'),
+    'Tests\\Web1\\StringGenerator\\' => array($baseDir . '/tests'),
     'Cocur\\Slugify\\' => array($vendorDir . '/cocur/slugify/src'),
 );
